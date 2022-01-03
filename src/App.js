@@ -11,16 +11,24 @@ function App() {
 		}
 		setToDos((currentArray) => [toDo, ...currentArray]);
 		setToDo(""); // submit 이벤트 작동시 toDo의 state값을 ""으로 셋텡
-		console.log(toDos);
-	}
-
+	};
+	
 	return (
 		<div className="App">
 			<h1>My Todos ({toDos.length})</h1>
 			<form onSubmit={onSubmit}>
-				<input type="text" onChange={onChange} placeholder="Write your to do..."/>
+				<input 
+					type="text" 
+					value={toDo} 
+					onChange={onChange} 
+					placeholder="Write your to do..."
+				/>
 				<button>Add To Do</button>
 			</form>
+			<hr />
+			<ul>
+				{toDos.map((item, idx) => (<li key={idx}>{item}</li>))}
+			</ul>
 		</div>
 	);
 }
